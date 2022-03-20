@@ -33,22 +33,29 @@ def menu():
 
 def note_user_input():
     while(True):
-        topic = str(input("Give a topic for the note: "))
-        if (len(topic.strip()) > 0):
+        note_topic = str(input("Give a topic for the note: "))
+        if (len(note_topic.strip()) > 0):
             break
         else:
             print("Please give a topic for the note.")
 
     while(True):
-        text = str(input("Write the content of the note: "))
-        if (len(text.strip()) > 0):
+        note_name = str(input("Give a name for the note: "))
+        if (len(note_name.strip()) > 0):
+            break
+        else:
+            print("Please give a topic for the note.")
+
+    while(True):
+        note_text = str(input("Write the content of the note: "))
+        if (len(note_text.strip()) > 0):
             break
         else:
             print("The content of the note is empty. Please write something.")
 
     now = datetime.now()
-    timestamp = now.strftime("%d/%m/%Y - %H:%M:%S")
-    return topic, text, timestamp
+    note_timestamp = now.strftime("%d/%m/%Y - %H:%M:%S")
+    return note_topic, note_name, note_text, note_timestamp
 
 def main():
     print("\nWelcome!")
@@ -60,17 +67,17 @@ def main():
             print("Exiting...")
             exit(0)
         elif (choice == 1):
-            topic, text, timestamp = note_user_input()
+            note_topic, note_name, note_text, note_timestamp = note_user_input()
             try:
-                print(str(proxy.new_note(topic, text, timestamp)))
+                print(str(proxy.new_note(note_topic, note_name, note_text, note_timestamp)))
             except Exception as e:
                 print("An error occurred while creating new note.")
                 print("Error: " + str(e))
         elif (choice == 2):
-            topic = str(input("Give topic for notes: "))
+            search_topic = str(input("Give topic for notes: "))
             try:
-                print("Looking for notes with topic the '{0}'".format(topic))
-                print(str(proxy.get_notes(topic)))
+                print("Looking for notes with topic the '{0}'".format(search_topic))
+                print(str(proxy.get_notes(search_topic)))
             except Exception as e:
                 print("An error occurred while fetching notes from the database.")
                 print("Error: " + str(e))

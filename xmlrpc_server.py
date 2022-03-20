@@ -3,20 +3,36 @@
 # Distributed Systems Assignment 2
 # Sources:
 # https://cewing.github.io/training.codefellows/assignments/day12/xmlrpc.html
+# https://stackoverflow.com/questions/28813876/how-do-i-get-pythons-elementtree-to-pretty-print-to-an-xml-file
+# https://docs.python.org/3/library/xml.etree.elementtree.html#module-xml.etree.ElementTree
 
 from xmlrpc.server import SimpleXMLRPCServer
+import xml.etree.ElementTree as ET
 
 address = ('localhost', 1234)
 server = SimpleXMLRPCServer(address)
 
-def new_note(topic, text, timestamp):
-    response = "New note added."
-    # search XML for topic
-    # if topic found add text below it
-    # if not, create new topic and text below it
-    return response
+def new_note(note_topic, note_name, note_text, note_timestamp):
+    topic = None
+    server_response = "New note added."
+    tree = ET.parse('database.xml')
+    root = tree.getroot()
+    ET.indent(tree, space="\t", level=0)
 
-def get_notes(topic):
+    for xml_topic in root:
+        if(str(xml_topic.attrib['name']) == str(note_topic)):
+            topic = xml_topic
+    if(not(topic)):
+        topic = ET.SubElement(root, "topic", attrib={"name": note_topic})
+    note = ET.SubElement(topic, "note", attrib={"name": note_name})
+    text = ET.SubElement(note, "text")
+    text.text = note_text
+    timestamp = ET.SubElement(note, "timestamp")
+    timestamp.text = note_timestamp
+    tree.write("database.xml", encoding="utf-8")
+    return server_response
+
+def get_notes(search_topic):
     # search XML for topic and get the notes
     # return notes to user
     return "NOTES"
