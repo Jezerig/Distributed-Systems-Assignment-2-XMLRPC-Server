@@ -33,4 +33,16 @@
 			<timestamp>20/03/2022 - 14:59:23</timestamp>
 		</note>
 	</topic>
-<topic name="Video games"><note name="Fun games to play"><text>LoL, CS, D2, Halo</text><timestamp>20/03/2022 - 15:10:39</timestamp></note></topic></data>
+	<topic name="Video games">
+		<note name="Fun games to play">
+			<text>LoL, CS, D2, Halo</text>
+			<timestamp>20/03/2022 - 15:10:39</timestamp>
+		</note>
+	</topic>
+	<topic name="New notes from different clients">
+		<note name="Note from client 1">
+			<text>This note was sent first</text>
+			<timestamp>20/03/2022 - 15:15:17</timestamp>
+		</note>
+	<note name="Note from client 2"><text>This note was sent at the same time as client 1, or rather half a second after client 1</text><timestamp>20/03/2022 - 15:15:17</timestamp></note></topic>
+</data>
