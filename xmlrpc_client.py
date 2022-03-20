@@ -11,6 +11,7 @@ from datetime import datetime
 
 proxy = xmlrpc.client.ServerProxy('http://localhost:1234')
 
+# UI
 def menu():
     while(True):
         print("\nAvailable choices: ")
@@ -31,6 +32,7 @@ def menu():
             print("Invalid choice. Try again.")
     return choice
 
+# asks the user for the topic, name and text of the note to be added
 def note_user_input():
     while(True):
         note_topic = str(input("Give a topic for the note: "))
@@ -57,6 +59,7 @@ def note_user_input():
     note_timestamp = now.strftime("%d/%m/%Y - %H:%M:%S")
     return note_topic, note_name, note_text, note_timestamp
 
+# prints all the notes under the searched topic
 def parse_notes(notes):
     if (len(notes) == 0):
         print("No notes available.")
@@ -78,6 +81,7 @@ def main():
             print("Exiting...")
             exit(0)
         elif (choice == 1):
+            # creates new note into the database
             note_topic, note_name, note_text, note_timestamp = note_user_input()
             try:
                 print(str(proxy.new_note(note_topic, note_name, note_text, note_timestamp)))
@@ -85,6 +89,7 @@ def main():
                 print("An error occurred while creating new note.")
                 print("Error: " + str(e))
         elif (choice == 2):
+            # searches for notes under given topic
             search_topic = str(input("Give topic for notes: "))
             try:
                 print("Looking for notes with the topic '{0}'\n".format(search_topic))
