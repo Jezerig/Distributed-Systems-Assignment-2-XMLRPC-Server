@@ -57,6 +57,17 @@ def note_user_input():
     note_timestamp = now.strftime("%d/%m/%Y - %H:%M:%S")
     return note_topic, note_name, note_text, note_timestamp
 
+def parse_notes(notes):
+    if (len(notes) == 0):
+        print("No notes available.")
+    else:
+        print("List of notes found: \n")
+    for note in notes:
+        print("Name: " + note['name'])
+        print("Text: " + note['text'])
+        print("Timestamp: " + note['timestamp'])
+        print("")
+
 def main():
     print("\nWelcome!")
     print("With this program you can add/fetch notes to/from a database.")
@@ -76,8 +87,8 @@ def main():
         elif (choice == 2):
             search_topic = str(input("Give topic for notes: "))
             try:
-                print("Looking for notes with topic the '{0}'".format(search_topic))
-                print(str(proxy.get_notes(search_topic)))
+                print("Looking for notes with the topic '{0}'\n".format(search_topic))
+                parse_notes(proxy.get_notes(search_topic))
             except Exception as e:
                 print("An error occurred while fetching notes from the database.")
                 print("Error: " + str(e))

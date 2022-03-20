@@ -1,12 +1,36 @@
 <data>
 	<topic name="Animal Things">
 		<note name="Dogs are better than cats 03">
-			<text>
-            Dogs respond when you call their name (unlike cats, who just ignore you)
-            </text>
-			<timestamp>
-            16/03/21 - 14:03:04
-            </timestamp>
+			<text>Dogs respond when you call their name (unlike cats, who just ignore you)</text>
+			<timestamp>16/03/21 - 14:03:04</timestamp>
+		</note>
+		<note name="New animal note">
+			<text>Text content of note</text>
+			<timestamp>20/03/2022 - 14:57:08</timestamp>
+		</note>
+		<note name="Another animal note">
+			<text>Text text text text 123</text>
+			<timestamp>20/03/2022 - 14:57:33</timestamp>
 		</note>
 	</topic>
-</data>
+	<topic name="New Topic">
+		<note name="Something">
+			<text>text text text text text text text</text>
+			<timestamp>20/03/2022 - 14:58:06</timestamp>
+		</note>
+		<note name="Note 2">
+			<text>text text text 123 text 123</text>
+			<timestamp>20/03/2022 - 14:58:25</timestamp>
+		</note>
+	</topic>
+	<topic name="Third Topic">
+		<note name="Note name 123">
+			<text>text text text text text text text</text>
+			<timestamp>20/03/2022 - 14:58:55</timestamp>
+		</note>
+		<note name="name">
+			<text>lorem ipsum</text>
+			<timestamp>20/03/2022 - 14:59:23</timestamp>
+		</note>
+	</topic>
+<topic name="Video games"><note name="Fun games to play"><text>LoL, CS, D2, Halo</text><timestamp>20/03/2022 - 15:10:39</timestamp></note></topic></data>

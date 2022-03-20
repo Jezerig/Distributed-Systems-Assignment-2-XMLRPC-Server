@@ -9,6 +9,12 @@
 from xmlrpc.server import SimpleXMLRPCServer
 import xml.etree.ElementTree as ET
 
+class Note:
+    note_name = ""
+    note_text = ""
+    note_timestamp = ""
+
+
 address = ('localhost', 1234)
 server = SimpleXMLRPCServer(address)
 
@@ -33,9 +39,18 @@ def new_note(note_topic, note_name, note_text, note_timestamp):
     return server_response
 
 def get_notes(search_topic):
-    # search XML for topic and get the notes
-    # return notes to user
-    return "NOTES"
+    list_of_notes = []
+    tree = ET.parse('database.xml')
+    root = tree.getroot()
+    for topic in root:
+        if(str(topic.attrib['name']) == str(search_topic)):
+            for note in topic:
+                new_note = Note()
+                new_note.name = note.attrib["name"]
+                new_note.text = note.find('text').text
+                new_note.timestamp = note.find("timestamp").text
+                list_of_notes.append(new_note)
+    return list_of_notes
 
 
 server.register_function(new_note)
